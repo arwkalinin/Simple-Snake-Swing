@@ -6,7 +6,7 @@ import java.util.Random;
 public class GamePanel extends JPanel implements ActionListener {
     static final int SCREEN_WIDTH = 600;
     static final int SCREEN_HEIGHT = 600;
-    static final int UNIT_SIZE = 30;
+    static final int UNIT_SIZE = 35;
     static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
     static final int DELAY = 75;
     final int[] x = new int[GAME_UNITS];
@@ -48,9 +48,6 @@ public class GamePanel extends JPanel implements ActionListener {
             }
              */
 
-            g.setColor(Color.red);
-            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
-
             for (int i = 0; i < snakeSize; i++) {
                 if (i == 0) {
                     g.setColor(Color.green);
@@ -58,9 +55,17 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
                 else {
                     g.setColor(new Color(45,180,0));
+                    // random snake color (optional)
+                    /*
+                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255)));
+                    */
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
+
+            g.setColor(Color.red);
+            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+
             g.setColor(Color.red);
             g.setFont(new Font("Ink Free", Font.BOLD, 35));
             FontMetrics metrics = getFontMetrics(g.getFont());
@@ -114,7 +119,7 @@ public class GamePanel extends JPanel implements ActionListener {
             isRunning = false;
         }
         // CHECK IF HEAD TOUCHES RIGHT BORDER
-        if (x[0] > SCREEN_WIDTH) {
+        if (x[0] > SCREEN_WIDTH - UNIT_SIZE) {
             isRunning = false;
         }
         // CHECK IF HEAD TOUCHES TOP BORDER
@@ -122,7 +127,7 @@ public class GamePanel extends JPanel implements ActionListener {
             isRunning = false;
         }
         // CHECK IF HEAD TOUCHES BOTTOM BORDER
-        if (y[0] > SCREEN_HEIGHT) {
+        if (y[0] > SCREEN_HEIGHT - UNIT_SIZE) {
             isRunning = false;
         }
 
