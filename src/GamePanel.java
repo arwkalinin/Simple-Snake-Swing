@@ -7,9 +7,9 @@ import java.util.Random;
 public class GamePanel extends JPanel implements ActionListener {
     static final int SCREEN_WIDTH = 700;
     static final int SCREEN_HEIGHT = 700;
-    static final int UNIT_SIZE = 35;
+    static final int UNIT_SIZE = 20;
     static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
-    static final int DELAY = 75;
+    static final int DELAY = 35;
     final int[] x = new int[GAME_UNITS];
     final int[] y = new int[GAME_UNITS];
     int snakeSize = 3;
@@ -59,10 +59,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
                 else {
                     g.setColor(new Color(114, 251, 38));
-                    // random snake color (optional)
-                    /*
                     g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255)));
-                    */
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
